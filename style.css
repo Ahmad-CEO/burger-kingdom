@@ -1,0 +1,498 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+:root {
+  --brown-primary: #6b4226;
+  --brown-dark: #4a2c1a;
+  --cream-primary: #f5ebdd;
+  --cream-light: #faf3e9;
+  --accent-warm: #c9915b;
+  --font-display: "Bagel Fat One", cursive;
+  --font-body: "Poppins", sans-serif;
+  --text-ts: 0.5rem;
+  --text-sm: 0.75rem;
+  --text-sm-var: 0.875;
+  --text-base: 1rem;
+  --text-x1: 1.5rem;
+  --text-x2: 2rem;
+  --text-x3: 3rem;
+  --text-x4: 4rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-1g: 2rem;
+  --space-x1: 3rem;
+  --space-2x1: 5rem;
+}
+body {
+  font-family: var(--font-body);
+  background-color: var(--cream-primary);
+  color: var(--brown-dark);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  font-family: inherit;
+}
+input,
+textarea,
+button {
+  font: inherit;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--brown-dark);
+  font-weight: 400;
+}
+h2 {
+  font-size: clamp(1rem, 5vw, 2.5rem);
+}
+h3 {
+  font-size: clamp(0.75rem, 3vw, 1.5rem);
+}
+section {
+  width: 100%;
+}
+p {
+  line-height: 1.6;
+}
+header {
+  width: 100%;
+}
+nav {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  justify-content: space-between;
+  width: 70vw;
+  gap: 40px;
+  margin: 0 auto;
+  padding: var(--space-xs) var(--space-md);
+  background-color: var(--cream-light);
+  border: 2px solid var(--brown-dark);
+  border-radius: 999px;
+  margin-top: var(--space-x1);
+}
+.nav-link{
+  max-width: 80vw;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1g);
+  list-style: none;
+}
+nav img {
+  width: 5rem;
+  height: auto;
+  object-fit: contain;
+}
+nav li a {
+  position: relative;
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--brown-dark);
+  padding: 0.4rem 0;
+}
+nav li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-warm);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+nav li a:hover::after {
+  font-style: underline;
+  transform: scaleX(1);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+.brand span {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--brown-dark);
+}
+.hero {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  max-height: 100vh;
+  row-gap: 0;
+  padding: 2.5rem 3.5rem;
+}
+.hero .img--wrapper {
+  grid-column: span 4;
+}
+.hero h1 {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: var(--space-xs);
+  min-width: 12ch;
+}
+.hero p {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+  z-index: 1;
+  min-width: 8ch;
+  max-width: 34ch;
+  font-size: clamp(0.9rem, 1.5vw, 2rem);
+}
+.hero img {
+  grid-column: span 4;
+  grid-row: 1/3;
+  max-width: none;
+  width: 115%;
+  height: auto;
+  justify-self: start;
+}
+.resturant,
+.menu {
+  padding: var(--space-2x1) 6%;
+  margin: 0 auto;
+}
+.resturant,
+.menu > section {
+  margin-bottom: 6rem;
+}
+.resturant .menu header {
+  margin-bottom: var(--space-x1);
+}
+.resturant .menu header h2 {
+  margin-bottom: var(--space-xs);
+}
+.menu-starters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-1g);
+}
+.menu-starters:not(.variant) {
+  border: 1px solid var(--brown-dark);
+  border-radius: 11px;
+}
+.menu-starters .variant {
+  grid-column: 1/-1;
+}
+.menu-starters .variant h3 {
+  grid-column: 1/-1;
+}
+.menu-starters article {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background-color: var(--cream-light);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+#chefspecial {
+  grid-column: 3;
+  grid-row: 1/4;
+  background-color: var(--brown-dark);
+  overflow: hidden;
+  color: var(--cream-light);
+  display: flex;
+  flex-direction: column;
+}
+#chefspecial dd,
+#chefspecial dt {
+  color: var(--cream-primary);
+}
+#chefspecial dt {
+  color: var(--cream-primary);
+}
+#chefspecial dl {
+  margin-top: auto;
+}
+#chefspecial dl > .price {
+  color: var(--cream-primary);
+}
+.menu-starters article mark {
+  display: inline-block;
+  margin: 1.25rem 1.25rem 0;
+  padding: 0.4rem 0.75rem;
+  background-color: var(--accent-warm);
+  color: var(--brown-dark);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  align-self: flex-start;
+}
+.menu-starters figure {
+  padding: var(--space-sm);
+}
+.menu-starters dl {
+  padding: 0 1.25rem 1.25rem;
+}
+.menu-starters article dt {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--brown-dark);
+}
+.menu-starters article dd {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.menu-starters article .price {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--brown-primary);
+}
+.menu-starters header {
+  grid-column: 1/-2;
+}
+.menu-side_dishes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-1g);
+  border: 1px solid var(--brown-dark);
+  border-radius: 11px;
+}
+.menu-side_dishes article {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background-color: var(--cream-light);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.menu-side_dishes figure {
+  padding: var(--space-sm);
+}
+.menu-side_dishes dl {
+  padding: 0 1.25rem 1.25rem;
+}
+.menu-side_dishes article dt {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--brown-dark);
+}
+.menu-side_dishes article dd {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.menu-side_dishes article .price {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--brown-primary);
+}
+.menu-side_dishes header {
+  grid-column: 1/-1;
+}
+.menu-deserts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-1g);
+  border: 1px solid var(--brown-dark);
+  border-radius: 11px;
+}
+.menu-deserts article {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background-color: var(--cream-light);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.menu-deserts figure {
+  padding: var(--space-sm);
+}
+.menu-deserts dl {
+  padding: 0 1.25rem 1.25rem;
+}
+.menu-deserts article dt {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--brown-dark);
+}
+.menu-deserts article dd {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.menu-deserts article .price {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--brown-primary);
+}
+.menu-deserts header {
+  grid-column: 1/-1;
+}
+.chef-message {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-1g);
+  padding: var(--space-2x1);
+}
+.chef-message img{
+  border-radius: 2%;
+}
+.chef-message blockquote {
+  margin: 0;
+  align-self: center;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 4vw, 2rem);
+}
+.chef-img, .team-img {
+  margin: 0;
+}
+.resturant--chef-wrapper{
+  display: grid;
+  grid-auto-flow: column;
+}
+.chef-message p {
+  align-self: center;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.55rem, 3vw, 1.5rem);
+  line-height: 1.7;
+  color: var(--brown-dark);
+  letter-spacing: 0.02rem;
+  padding: var(--space-sm);
+}
+.customer-review {
+  padding: var(--space-2x1) 6%;
+  background-color: var(--cream-light);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+.customer-review header {
+  margin-bottom: var(--space-x1);
+  grid-column: 1/-1;
+}
+.customer-review h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.customer-review blockquote {
+  margin: 0;
+  padding: var(--space-1g);
+  background-color: var(--cream-primary);
+  border-radius: var(--space-sm);
+}
+.customer-review blockquote p {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--space-sm);
+  line-height: 1.7;
+  color: var(--brown-dark);
+}
+.customer-review cite {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--brown-primary);
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 3%;
+  background-color: var(--brown-dark);
+  color: var(--cream-primary);
+}
+footer img {
+  width: 5rem;
+  height: auto;
+  margin: 0;
+}
+.footer--copyright{
+  display: flex;
+  flex-direction: row;
+}
+.footer--copyright p{
+  align-self: center;
+}
+.footer--links{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+footer i {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--cream-primary);
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* mediaqueries */
+
+/* smaller screens  */
+@media (max-width: 450px) {
+  nav {
+    width: 80vw;
+    gap: 4px;
+    padding: 0;
+  }
+  .nav-link{
+    width: 70%;
+  }
+  .nav-link a{
+    font-size: 0.75rem;
+  }
+  .nav-link ul {
+    display: flex;
+    gap: var(--space-sm);
+    list-style: none;
+  }
+  .hero {
+    max-height: 70vh;
+    padding: var(--space-1g) var(--space-1g);
+  }
+  .menu-starters,
+  .menu-deserts,
+  .menu-side_dishes {
+    display: flex;
+    flex-direction: column;
+  }
+  .chef-message blockquote{
+    font-size: clamp(0.5rem, 2vw , 1rem);
+  }
+  .customer-review{
+    display: flex;
+    flex-direction: column;
+  }
+}
